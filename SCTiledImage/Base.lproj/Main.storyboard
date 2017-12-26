@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SCTiledImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhL-1r-Ydf" customClass="SCTiledImageScrollView" customModule="SCTiledImage" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcv-Pr-Pfe">
+                                <rect key="frame" x="174" y="482" width="160" height="160"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2JT-KY-ohP">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2JT-KY-ohP" secondAttribute="bottom" id="0Mt-gI-Bch"/>
+                                    <constraint firstItem="2JT-KY-ohP" firstAttribute="top" secondItem="mcv-Pr-Pfe" secondAttribute="top" id="2UE-5d-Yqm"/>
+                                    <constraint firstAttribute="trailing" secondItem="2JT-KY-ohP" secondAttribute="trailing" id="ZjH-rN-KJa"/>
+                                    <constraint firstAttribute="width" constant="160" id="b93-gM-otZ"/>
+                                    <constraint firstItem="2JT-KY-ohP" firstAttribute="leading" secondItem="mcv-Pr-Pfe" secondAttribute="leading" id="bcP-jL-tYU"/>
+                                    <constraint firstAttribute="height" constant="160" id="y0Y-Q6-klh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="mcv-Pr-Pfe" secondAttribute="trailing" constant="25" id="DYP-Za-BPH"/>
+                            <constraint firstItem="lhL-1r-Ydf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ft3-Bi-aeH"/>
+                            <constraint firstItem="lhL-1r-Ydf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="I2T-aQ-qmi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lhL-1r-Ydf" secondAttribute="bottom" id="T6d-fM-xxU"/>
+                            <constraint firstAttribute="trailing" secondItem="lhL-1r-Ydf" secondAttribute="trailing" id="omH-H5-4CP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mcv-Pr-Pfe" secondAttribute="bottom" constant="25" id="xG4-YX-im5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="minimapImageView" destination="2JT-KY-ohP" id="Pz3-nX-PuM"/>
+                        <outlet property="minimapImageViewHeight" destination="y0Y-Q6-klh" id="qhE-wB-7AQ"/>
+                        <outlet property="minimapImageViewWidth" destination="b93-gM-otZ" id="J1v-st-tOP"/>
+                        <outlet property="tiledImageScrollView" destination="lhL-1r-Ydf" id="0Ra-Uv-0uq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="32.833583208395808"/>
+        </scene>
+    </scenes>
+</document>
