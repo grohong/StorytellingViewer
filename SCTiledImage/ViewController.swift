@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     }
     
     @objc func scollViewPanAction (_ sender : UIPanGestureRecognizer){
+        minimapBackgroundView.isHidden = false
         var height = Double(tiledImageScrollView.visibleRect.height) / minimapRatio
         var width = Double(tiledImageScrollView.visibleRect.width) / minimapRatio
         let x = Double(tiledImageScrollView.visibleRect.origin.x) / minimapRatio
@@ -53,12 +54,18 @@ class ViewController: UIViewController {
         } else if Double(tiledImageScrollView.visibleRect.origin.x) <= 0.0 && Double(tiledImageScrollView.visibleRect.origin.y) > 0.0 {
             currentView?.frame = CGRect(x: 0.0, y: y, width: width, height: height)
         }
+        
+        if tiledImageScrollView.isTracking == false {
+            minimapBackgroundView.isHidden = true
+        }
+        
+        print(tiledImageScrollView.zoomScale)
     }
     
     private func setupTiledImageScrollView() {
         let imageSize = CGSize(width: 9112, height: 4677)
         let tileSize = CGSize(width: 256, height: 256)
-        let zoomLevels = 4
+        let zoomLevels = 2
         
         dataSource = ExampleTiledImageDataSource(imageSize: imageSize, tileSize: tileSize, zoomLevels: zoomLevels)
         tiledImageScrollView.set(dataSource: dataSource!)
