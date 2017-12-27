@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E789C6A1FF0C03900F8CB54 /* TiledImageRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E789C691FF0C03900F8CB54 /* TiledImageRotation.swift */; };
 		4E789C6C1FF0C08900F8CB54 /* TiledImageDataSoucrceRotationDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E789C6B1FF0C08900F8CB54 /* TiledImageDataSoucrceRotationDecorator.swift */; };
+		4E78A3F31FF2724300F8CB54 /* Minimap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78A3F21FF2724300F8CB54 /* Minimap.swift */; };
 		9C0252FF1E44889600F3457A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0252FE1E44889600F3457A /* AppDelegate.swift */; };
 		9C0253011E44889600F3457A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253001E44889600F3457A /* ViewController.swift */; };
 		9C0253041E44889600F3457A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0253021E44889600F3457A /* Main.storyboard */; };
@@ -950,6 +951,7 @@
 /* Begin PBXFileReference section */
 		4E789C691FF0C03900F8CB54 /* TiledImageRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiledImageRotation.swift; sourceTree = "<group>"; };
 		4E789C6B1FF0C08900F8CB54 /* TiledImageDataSoucrceRotationDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiledImageDataSoucrceRotationDecorator.swift; sourceTree = "<group>"; };
+		4E78A3F21FF2724300F8CB54 /* Minimap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minimap.swift; sourceTree = "<group>"; };
 		9C0252FB1E44889600F3457A /* SCTiledImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCTiledImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0252FE1E44889600F3457A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C0253001E44889600F3457A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1901,6 +1903,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E78A3EF1FF26BB600F8CB54 /* Minimap view */ = {
+			isa = PBXGroup;
+			children = (
+				4E78A3F21FF2724300F8CB54 /* Minimap.swift */,
+			);
+			name = "Minimap view";
+			sourceTree = "<group>";
+		};
 		9C0252F21E44889600F3457A = {
 			isa = PBXGroup;
 			children = (
@@ -1928,6 +1938,7 @@
 				9C0253051E44889600F3457A /* Assets.xcassets */,
 				9C0253071E44889600F3457A /* LaunchScreen.storyboard */,
 				9C02530A1E44889600F3457A /* Info.plist */,
+				4E78A3EF1FF26BB600F8CB54 /* Minimap view */,
 				9C35AA231E44964B009FF963 /* Tiled Image view */,
 			);
 			path = SCTiledImage;
@@ -3887,6 +3898,7 @@
 				4E789C6A1FF0C03900F8CB54 /* TiledImageRotation.swift in Sources */,
 				9C02531F1E448C7000F3457A /* DrawableTile.swift in Sources */,
 				9C0253231E448C7000F3457A /* TiledImageView.swift in Sources */,
+				4E78A3F31FF2724300F8CB54 /* Minimap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
