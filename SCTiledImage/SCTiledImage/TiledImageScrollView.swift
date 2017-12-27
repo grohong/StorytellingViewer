@@ -184,5 +184,5 @@ extension SCTiledImageScrollView: UIScrollViewDelegate {
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         tiledImageScrollViewDelegate?.tiledImageScrollViewDidScrollOrZoom(self)
-    } 
+    }
 }

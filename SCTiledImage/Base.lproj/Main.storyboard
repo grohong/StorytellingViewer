@@ -54,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="minimapBackgroundView" destination="mcv-Pr-Pfe" id="abt-YF-Klb"/>
                         <outlet property="minimapImageView" destination="2JT-KY-ohP" id="Pz3-nX-PuM"/>
                         <outlet property="minimapImageViewHeight" destination="y0Y-Q6-klh" id="qhE-wB-7AQ"/>
                         <outlet property="minimapImageViewWidth" destination="b93-gM-otZ" id="J1v-st-tOP"/>

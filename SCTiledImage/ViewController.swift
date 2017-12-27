@@ -13,24 +13,45 @@ class ViewController: UIViewController {
     @IBOutlet weak var minimapImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var minimapImageViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var minimapBackgroundView: UIView!
     @IBOutlet weak var minimapImageView: UIImageView!
     @IBOutlet var tiledImageScrollView: SCTiledImageScrollView!
     private var dataSource: ExampleTiledImageDataSource?
-    var tiledImageScrollViewPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scrollViewPanAction(_ :)))
+    private var tiledImageScrollViewPanGestureRecognizer: UIPanGestureRecognizer?
+    
+    private var currentView: UIView?
+    private var minimapRatio: Double = 0.0
+    
+    private var minimap:Minimap?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tiledImageScrollViewPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(scollViewPanAction(_ :)))
+        tiledImageScrollViewPanGestureRecognizer?.delegate = self
         setupTiledImageScrollView()
-        tiledImageScrollViewPanGestureRecognizer.delegate = self
     }
     
-    @objc func scrollViewPanAction (_ sender : UIPanGestureRecognizer){
-        let velocity = sender.velocity(in: tiledImageScrollView)
-        if abs(velocity.x) > abs(velocity.y) {
-            velocity.x < 0 ? print("left") :  print("right")
+    @objc func scollViewPanAction (_ sender : UIPanGestureRecognizer){
+        var height = Double(tiledImageScrollView.visibleRect.height) / minimapRatio
+        var width = Double(tiledImageScrollView.visibleRect.width) / minimapRatio
+        let x = Double(tiledImageScrollView.visibleRect.origin.x) / minimapRatio
+        let y = Double(tiledImageScrollView.visibleRect.origin.y) / minimapRatio
+        
+        if Double(minimapBackgroundView.frame.height) < height {
+            height = Double(minimapBackgroundView.frame.height)
         }
-        else if abs(velocity.y) > abs(velocity.x) {
-            velocity.y < 0 ? print("up") :  print("down")
+        if Double(minimapBackgroundView.frame.width) < width {
+            width = Double(minimapBackgroundView.frame.width)
+        }
+        
+        if Double(tiledImageScrollView.visibleRect.origin.x) <= 0.0 && Double(tiledImageScrollView.visibleRect.origin.y) <= 0.0{
+            currentView?.frame = CGRect(x: 0.0, y: 0.0, width: width, height: height)
+        } else if Double(tiledImageScrollView.visibleRect.origin.x) > 0.0 && Double(tiledImageScrollView.visibleRect.origin.y) > 0.0 {
+            currentView?.frame = CGRect(x: x, y: y, width: width, height: height)
+        } else if Double(tiledImageScrollView.visibleRect.origin.x) > 0.0 && Double(tiledImageScrollView.visibleRect.origin.y) <= 0.0 {
+            currentView?.frame = CGRect(x: x, y: 0.0, width: width, height: height)
+        } else if Double(tiledImageScrollView.visibleRect.origin.x) <= 0.0 && Double(tiledImageScrollView.visibleRect.origin.y) > 0.0 {
+            currentView?.frame = CGRect(x: 0.0, y: y, width: width, height: height)
         }
     }
     
@@ -46,18 +67,21 @@ class ViewController: UIViewController {
             self.minimapImageViewWidth.constant = (backgroundImage?.size.width)!/4
             self.minimapImageView.image = backgroundImage
             
-            var currentView = UIView(frame: CGRect(x: 0, y: 0, width: (backgroundImage?.size.width)!/4, height: (backgroundImage?.size.height)!/4))
-            currentView.layer.borderWidth = 2
-            currentView.layer.borderColor = UIColor.yellow.cgColor
+            self.currentView = UIView(frame: CGRect(x: 0, y: 0, width: (backgroundImage?.size.width)!/4, height: (backgroundImage?.size.height)!/4))
+            self.currentView?.layer.borderWidth = 2
+            self.currentView?.layer.borderColor = UIColor.yellow.cgColor
             
-            self.minimapImageView.addSubview(currentView)
-            self.tiledImageScrollView.addGestureRecognizer(self.tiledImageScrollViewPanGestureRecognizer)
+            self.minimapRatio = Double(imageSize.height / ((self.currentView?.bounds.height)!))
+            
+            self.minimapBackgroundView.addSubview(self.currentView!)
+            self.tiledImageScrollView.addGestureRecognizer(self.tiledImageScrollViewPanGestureRecognizer!)
         })
     }
 }
 
 extension ViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
+    
         return true
     }
 }
